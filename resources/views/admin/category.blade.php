@@ -22,6 +22,7 @@ $page_title = "Category";
         <!-- MAIN PANEL START-->
         <div class="main-panel">
             <div class="content-wrapper">
+               
                 <div class="row">
                     <div class="col-12">
                         <div class="title">
@@ -30,9 +31,19 @@ $page_title = "Category";
                     </div>
                 </div>
                 <div class="row d-flex justify-content-center">
-                    <div class="col-4">
+                    <div class="col-md-4">
                         <div class="category__from">
-                            <form action="">
+                        <!-- Message -->
+                        @if(session()->has('message'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <strong>Success!</strong>  {{ session()->get('message') }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        @endif
+                            <form action="{{ url('add_category') }}" method="POST">
+                                @csrf
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col">
